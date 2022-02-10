@@ -1,0 +1,13 @@
+<div *ngIf="this.getPokemonService().onePokemon">
+  <div>{{ this.getPokemonService().onePokemon.name }}</div>
+  <div>
+    <img
+      [src]="this.getPokemonService().onePokemon.sprites.front_default"
+      alt=""
+    />
+  </div>
+
+  <div>
+    <!-- {{ this.getPokemonService().onePokemon | json }} -->
+  </div>
+</div>

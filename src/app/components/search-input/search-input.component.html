@@ -1,0 +1,15 @@
+<div class="container">
+  <form (ngSubmit)="buscar()" autocomplete="off">
+    <input
+      type="text"
+      name="termino"
+      placeholder="Buscar por ID o nombre..."
+      [(ngModel)]="this.termino"
+    />
+  </form>
+  <p>ID max: 898</p>
+
+  <div class="error-msg" *ngIf="hayError">
+    No se encontro un pokemon con ese nombre o Id.
+  </div>
+</div>

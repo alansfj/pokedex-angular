@@ -1,0 +1,30 @@
+<app-search-input></app-search-input>
+
+<app-pagination-btns (onChangePage)="changePage()"></app-pagination-btns>
+
+<div *ngIf="getPokemonService().pokemons.length !== 20; else pokemonCard">
+  Cargando...
+</div>
+
+<ng-template #pokemonCard>
+  <div class="pokemon-cards-container">
+    <div
+      class="pokemon-card"
+      *ngFor="let pokemon of getPokemonService().pokemons"
+      [routerLink]="['/details', pokemon.name]"
+    >
+      <div>
+        Nombre: <span>{{ pokemon.name }}</span>
+      </div>
+      <div>
+        <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+      </div>
+      <div>
+        Tipo:
+        <p *ngFor="let type of pokemon.types">{{ type.type.name }}</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<app-pagination-btns (onChangePage)="changePage()"></app-pagination-btns>

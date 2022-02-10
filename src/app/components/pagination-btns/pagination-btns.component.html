@@ -1,0 +1,8 @@
+<div class="btns-container">
+  <button *ngIf="this.pokemonService.offset > 0" (click)="changePage(-20)">
+    Anterior
+  </button>
+  <button *ngIf="this.pokemonService.offset < 1098" (click)="changePage(20)">
+    Siguiente
+  </button>
+</div>
