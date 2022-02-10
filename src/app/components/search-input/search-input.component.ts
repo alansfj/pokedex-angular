@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-input',
@@ -8,10 +8,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./search-input.component.scss'],
 })
 export class SearchInputComponent implements OnInit {
-  constructor(
-    private pokemonService: PokemonService,
-    private locationService: Location
-  ) {}
+  constructor(private pokemonService: PokemonService, private router: Router) {}
 
   termino: string = '';
   hayError: boolean = false;
@@ -24,8 +21,7 @@ export class SearchInputComponent implements OnInit {
     this.pokemonService.getPokemon(this.termino).subscribe(
       (pokemon) => {
         console.log(pokemon);
-        this.locationService.go(`/details/${this.termino}`);
-        window.location.reload();
+        this.router.navigate(['/details', pokemon.name]);
       },
       (err) => {
         this.hayError = true;
