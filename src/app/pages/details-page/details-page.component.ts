@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { PokemonService } from '../../services/pokemon.service';
 export class DetailsPageComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +24,9 @@ export class DetailsPageComponent implements OnInit {
 
   getPokemonService() {
     return this.pokemonService;
+  }
+
+  regresar() {
+    this.router.navigate(['/catalog']);
   }
 }

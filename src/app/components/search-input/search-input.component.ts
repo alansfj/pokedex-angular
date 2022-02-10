@@ -20,7 +20,6 @@ export class SearchInputComponent implements OnInit {
 
     this.pokemonService.getPokemon(this.termino).subscribe(
       (pokemon) => {
-        console.log(pokemon);
         this.router.navigate(['/details', pokemon.name]);
       },
       (err) => {
